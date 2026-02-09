@@ -37,6 +37,15 @@ realtime_monitor() {
 
 login_history() {
     echo "Login history:"
-    last | head
+
+    if command -v last >/dev/null 2>&1; then
+        last | head
+    else
+        echo "Command 'last' not found."
+        echo "Install util-linux package."
+    fi
+
     read -p "Press Enter..."
+}
+
 }
